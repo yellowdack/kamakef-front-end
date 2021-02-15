@@ -18,8 +18,8 @@
 import Dashboard from "views/Dashboard.js";
 import UserProfile from "views/UserProfile.js";
 import TableList from "views/TableList.js";
-import Typography from "views/Typography.js";
-import Icons from "views/Icons.js";
+import Scripts from "views/Scripts.js";
+import Installs from "views/Installs.js";
 import Maps from "views/Maps.js";
 import Notifications from "views/Notifications.js";
 import Upgrade from "views/Upgrade.js";
@@ -55,17 +55,17 @@ const dashboardRoutes = [
     layout: "/admin",
   },
   {
-    path: "/typography",
-    name: "Typography",
+    path: "/Scripts",
+    name: "Scripts",
     icon: "nc-icon nc-paper-2",
-    component: Typography,
+    component: Scripts,
     layout: "/admin",
   },
   {
-    path: "/icons",
-    name: "Icons",
+    path: "/Installs",
+    name: "Installs",
     icon: "nc-icon nc-atom",
-    component: Icons,
+    component: Installs,
     layout: "/admin",
   },
   {

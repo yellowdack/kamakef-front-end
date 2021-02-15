@@ -12,7 +12,7 @@ import {
   Col,
 } from "react-bootstrap";
 
-function Icons() {
+function Installs() {
   return (
     <>
       <Container fluid>
@@ -638,4 +638,4 @@ function Icons() {
   );
 }
 
-export default Icons;
+export default Installs;

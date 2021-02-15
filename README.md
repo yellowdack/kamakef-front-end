@@ -128,7 +128,7 @@ light-bootstrap-dashboard-react
         ├── Maps.js
         ├── Notifications.js
         ├── TableList.js
-        ├── Typography.js
+        ├── Scripts.js
         ├── Upgrade.js
         └── UserProfile.js
 ```
