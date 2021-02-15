@@ -114,8 +114,6 @@ light-bootstrap-dashboard-react
     ├── layouts
     │   └── Admin.js
     ├── components
-    │   ├── FixedPlugin
-    │   │   └── FixedPlugin.js
     │   ├── Footer
     │   │   └── Footer.js
     │   ├── Navbars
