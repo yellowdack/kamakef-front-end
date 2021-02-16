@@ -1,5 +1,4 @@
-import React from "react";
-
+import React,  {useState,  useEffect} from "react";
 // react-bootstrap components
 import {
   Badge,
@@ -14,6 +13,16 @@ import {
 } from "react-bootstrap";
 
 function TableList() {
+
+  const [initData, setInitData] = useState({});
+  useEffect(() => {
+    fetch('/table').then(response =>
+      response.json().then(data => {setInitData(data)
+      })
+    );
+  }, []);
+  console.log(initData);
+
   return (
     <>
       <Container fluid>
