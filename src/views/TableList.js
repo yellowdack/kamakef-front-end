@@ -1,4 +1,5 @@
 import React,  {useState,  useEffect} from "react";
+
 // react-bootstrap components
 import {
   Badge,
@@ -14,14 +15,16 @@ import {
 
 function TableList() {
 
-  const [initData, setInitData] = useState({});
+  const [ools, setOols] = useState([]);
   useEffect(() => {
     fetch('/table').then(response =>
-      response.json().then(data => {setInitData(data)
+      response.json().then(data => {
+        setOols(data.tableToo);
       })
     );
   }, []);
-  console.log(initData);
+
+
 
   return (
     <>
@@ -49,113 +52,29 @@ function TableList() {
                       <th className="border-0">Omp</th>
                       <th className="border-0">Unit</th>
                       <th className="border-0">Comments</th>
-                      <th className="border-0">Inserion Time</th>
-                        <th className="border-0">Dashboreds</th>
+                      <th className="border-0">Insertion Time</th>
+                      <th className="border-0">Dashboreds</th>
                     </tr>
                   </thead>
                   <tbody>
+                    {ools.map((ools) => (
                     <tr>
-                      <td>1</td>
-                      <td>19/10/2020</td>
-                      <td>Dakota Rice</td>
-                      <td>sdfdsfdsf</td>
-                      <td>19/10/2020</td>
-                      <td>19/10/2020</td>
-                      <td>Rice</td>
-                      <td>Niger</td>
-                      <td>Oud-Turnhout</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
+                      <td key="{ools.ID}">{ools.ID}</td>
+                      <td key="{ools.Date_Create}">{ools.Date_Create}</td>
+                      <td key="{ools.Kama}">{ools.Kama}</td>
+                      <td key="{ools.Last_i}">{ools.Last_i}</td>
+                      <td key="{ools.Birth_Date}">{ools.Birth_Date}</td>
+                      <td key="{ools.Last_Date}">{ools.Last_Date}</td>
+                      <td key="{ools.ID_Family}">{ools.ID_Family}</td>
+                      <td key="{ools.Op_Name}">{ools.Op_Name}</td>
+                      <td key="{ools.Aad_Name}">{ools.Aad_Name}</td>
+                      <td key="{ools.Ik}">{ools.Ik}</td>
+                      <td key="{ools.Omp}">{ools.Omp}</td>
+                      <td key="{ools.Unit}">{ools.Unit}</td>
+                      <td key="{ools.Comments}">{ools.Comments}</td>
+                      <td key="{ools.Insertion_Time}">{ools.Insertion_Time}</td>
                     </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Minerva Hooper</td>
-                      <td>$23,789</td>
-                      <td>Curaçao</td>
-                      <td>Sinaai-Waas</td>
-                      <td>19/10/2020</td>
-                      <td>Rice</td>
-                      <td>Niger</td>
-                      <td>Oud-Turnhout</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Sage Rodriguez</td>
-                      <td>$56,142</td>
-                      <td>Netherlands</td>
-                      <td>Baileux</td>
-                      <td>19/10/2020</td>
-                      <td>Rice</td>
-                      <td>Niger</td>
-                      <td>Oud-Turnhout</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Philip Chaney</td>
-                      <td>$38,735</td>
-                      <td>Korea, South</td>
-                      <td>Overland Park</td>
-                      <td>19/10/2020</td>
-                      <td>Rice</td>
-                      <td>Niger</td>
-                      <td>Oud-Turnhout</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>Doris Greene</td>
-                      <td>$63,542</td>
-                      <td>Malawi</td>
-                      <td>Feldkirchen in Kärnten</td>
-                      <td>19/10/2020</td>
-                      <td>Rice</td>
-                      <td>Niger</td>
-                      <td>Oud-Turnhout</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Mason Porter</td>
-                      <td>$78,615</td>
-                      <td>Chile</td>
-                      <td>Gloucester</td>
-                      <td>19/10/2020</td>
-                      <td>Rice</td>
-                      <td>Niger</td>
-                      <td>Oud-Turnhout</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                      <td>hjkdsb</td>
-                    </tr>
+                    ))}
                   </tbody>
                 </Table>
               </Card.Body>
