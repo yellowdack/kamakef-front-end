@@ -1,4 +1,4 @@
-import React,  {useState,  useEffect} from "react";
+import React,  { Component, useState,  useEffect} from "react";
 
 // react-bootstrap components
 import {
@@ -14,7 +14,7 @@ import {
 } from "react-bootstrap";
 
 function TableList() {
-
+  //get all table from server
   const [ools, setOols] = useState([]);
   useEffect(() => {
     fetch('/table').then(response =>
@@ -23,8 +23,13 @@ function TableList() {
       })
     );
   }, []);
+  const state= {
+    searchString: ""
+  };
 
 
+
+  const [searchBox, setSearcBox] = useState("");
 
   return (
     <>
@@ -38,6 +43,7 @@ function TableList() {
               <Card.Body className="table-full-width table-responsive px-0">
                 <Table className="table-hover table-striped">
                   <thead>
+                      <tr><th><input type="text" placeholder='search..' /></th></tr>
                     <tr>
                       <th className="border-0">ID</th>
                       <th className="border-0">Date Create</th>
