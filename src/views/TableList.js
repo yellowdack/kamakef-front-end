@@ -15,7 +15,13 @@ import {
 
 function TableList() {
   //get all table from server
+
+
   const [ools, setOols] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const [filteredOols, setFilteredOols] = useState([]);
+
   useEffect(() => {
     fetch('/table').then(response =>
       response.json().then(data => {
@@ -23,13 +29,28 @@ function TableList() {
       })
     );
   }, []);
-  const state= {
-    searchString: ""
-  };
 
+    const filterOols=(searchTerm)=> {
+      return (
+        ools.filter((ools)=> {
+          if (searchTerm == "") {
+            return ools;
+          } else if (ools.ID.toLowerCase().includes(searchTerm.toLowerCase())) {
+            return ools;
+          }
+      }
+    ))
+  }
 
+  //useEffect(() => {
+    //console.log(search);
+    //setFilteredOols(
+      //ools.filter (ools => {
+      //  return ools.ID.toLowerCase().includes(search.toLowerCase())
+    //})
+  //)
+//}, [search, ools])
 
-  const [searchBox, setSearcBox] = useState("");
 
   return (
     <>
@@ -41,9 +62,19 @@ function TableList() {
                 <Card.Title as="h4">ool Table</Card.Title>
               </Card.Header>
               <Card.Body className="table-full-width table-responsive px-0">
-                <Table className="table-hover table-striped">
+                <Table className="table-hover table-striped" >
                   <thead>
-                      <tr><th><input type="text" placeholder='search..' /></th></tr>
+                    <tr>
+                      <th>
+                        <input
+                          type="text"
+                          placeholder="search.."
+                          onChange={(event) => {
+                            setSearchTerm(event.target.value);
+                          }}
+                      />
+                      </th>
+                    </tr>
                     <tr>
                       <th className="border-0">ID</th>
                       <th className="border-0">Date Create</th>
@@ -63,7 +94,7 @@ function TableList() {
                     </tr>
                   </thead>
                   <tbody>
-                    {ools.map((ools) => (
+                    {filterOols(searchTerm).map((ools, key) => (
                     <tr>
                       <td key="{ools.ID}">{ools.ID}</td>
                       <td key="{ools.Date_Create}">{ools.Date_Create}</td>
@@ -80,7 +111,7 @@ function TableList() {
                       <td key="{ools.Comments}">{ools.Comments}</td>
                       <td key="{ools.Insertion_Time}">{ools.Insertion_Time}</td>
                     </tr>
-                    ))}
+                  ))}
                   </tbody>
                 </Table>
               </Card.Body>
