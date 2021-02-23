@@ -15,13 +15,11 @@ import {
 
 function TableList() {
   //get all table from server
-
-
   const [ools, setOols] = useState([]);
+  //search on table
   const [searchTerm, setSearchTerm] = useState('');
 
-  const [filteredOols, setFilteredOols] = useState([]);
-
+  //insert the data from server to ools
   useEffect(() => {
     fetch('/table').then(response =>
       response.json().then(data => {
@@ -30,26 +28,34 @@ function TableList() {
     );
   }, []);
 
+  //filter the table by the search input
     const filterOols=(searchTerm)=> {
       return (
         ools.filter((ools)=> {
           if (searchTerm == "") {
             return ools;
-          } else if (ools.ID.toLowerCase().includes(searchTerm.toLowerCase())) {
+          } else if (ools.ID.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    //ools.Date_Create.toString().includes(searchTerm.toString()) ||
+                    ools.Kama.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    ools.Last_i.includes(searchTerm)  ||
+                    ools.Birth_Date.toString().includes(searchTerm.toString()) ||
+                    ools.Last_Date.toString().includes(searchTerm.toString()) ||
+                    ools.ID_Family.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    ools.Op_Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    ools.Aad_Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    ools.Ik.includes(searchTerm) ||
+                    ools.Omp.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    ools.Unit.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    ools.Comments.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    ools.Insertion_Time.includes(searchTerm)
+                   ) {
             return ools;
           }
       }
     ))
   }
 
-  //useEffect(() => {
-    //console.log(search);
-    //setFilteredOols(
-      //ools.filter (ools => {
-      //  return ools.ID.toLowerCase().includes(search.toLowerCase())
-    //})
-  //)
-//}, [search, ools])
+  
 
 
   return (
@@ -66,7 +72,8 @@ function TableList() {
                   <thead>
                     <tr>
                       <th>
-                        <input
+                      <Button className="button-add-row">+</Button>
+                        <input className="input-container"
                           type="text"
                           placeholder="search.."
                           onChange={(event) => {
@@ -96,15 +103,15 @@ function TableList() {
                   <tbody>
                     {filterOols(searchTerm).map((ools, key) => (
                     <tr>
-                      <td key="{ools.ID}">{ools.ID}</td>
-                      <td key="{ools.Date_Create}">{ools.Date_Create}</td>
-                      <td key="{ools.Kama}">{ools.Kama}</td>
-                      <td key="{ools.Last_i}">{ools.Last_i}</td>
-                      <td key="{ools.Birth_Date}">{ools.Birth_Date}</td>
-                      <td key="{ools.Last_Date}">{ools.Last_Date}</td>
-                      <td key="{ools.ID_Family}">{ools.ID_Family}</td>
-                      <td key="{ools.Op_Name}">{ools.Op_Name}</td>
-                      <td key="{ools.Aad_Name}">{ools.Aad_Name}</td>
+                      <td key="{ools.ID}">{ools.ID} </td>
+                      <td key="{ools.Date_Create}">{ools.Date_Create} </td>
+                      <td key="{ools.Kama}">{ools.Kama} </td>
+                      <td key="{ools.Last_i}">{ools.Last_i} </td>
+                      <td key="{ools.Birth_Date}">{ools.Birth_Date} </td>
+                      <td key="{ools.Last_Date}">{ools.Last_Date} </td>
+                      <td key="{ools.ID_Family}">{ools.ID_Family} </td>
+                      <td key="{ools.Op_Name}">{ools.Op_Name} </td>
+                      <td key="{ools.Aad_Name}">{ools.Aad_Name} </td>
                       <td key="{ools.Ik}">{ools.Ik}</td>
                       <td key="{ools.Omp}">{ools.Omp}</td>
                       <td key="{ools.Unit}">{ools.Unit}</td>
