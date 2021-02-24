@@ -82,144 +82,137 @@ function TableList() {
                 <Card.Title as="h4">ool Table</Card.Title>
               </Card.Header>
               <Card.Body className="table-full-width table-responsive px-0">
-                <Table className="table-hover table-striped" >
-                  <thead>
-                    <tr>
-                      <th>
-                        <Button className="button-add-row" onClick={handleClickOpen}>+</Button>
-                        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
-                           <DialogContent>
-                             <DialogContentText>
-                               <input className="input-Dialog"
-                                 type="text"
-                                 placeholder="ID"
-                                 onChange={(event) => {
-                                   setSearchTerm(event.target.value);
-                                 }}
-                                />
-                                <input className="input-Dialog"
-                                  type="text"
-                                  placeholder="Date Create"
-                                  onChange={(event) => {
-                                    setSearchTerm(event.target.value);
-                                  }}
-                                 />
-                                 <input className="input-Dialog"
-                                   type="text"
-                                   placeholder="Kama"
-                                   onChange={(event) => {
-                                     setSearchTerm(event.target.value);
-                                   }}
-                                  />
-                                  <input className="input-Dialog"
-                                    type="text"
-                                    placeholder="Last i"
-                                    onChange={(event) => {
-                                      setSearchTerm(event.target.value);
-                                    }}
-                                   />
-                                   <input className="input-Dialog"
-                                     type="text"
-                                     placeholder="Birth Date"
-                                     onChange={(event) => {
-                                       setSearchTerm(event.target.value);
-                                     }}
-                                    />
-                                    <input className="input-Dialog"
-                                      type="text"
-                                      placeholder="Last Date"
-                                      onChange={(event) => {
-                                        setSearchTerm(event.target.value);
-                                      }}
-                                     />
-                                     <input className="input-Dialog"
-                                       type="text"
-                                       placeholder="ID Family"
-                                       onChange={(event) => {
-                                         setSearchTerm(event.target.value);
-                                       }}
-                                      />
-                                      <input className="input-Dialog"
-                                        type="text"
-                                        placeholder="Op Nam"
-                                        onChange={(event) => {
-                                          setSearchTerm(event.target.value);
-                                        }}
-                                       />
-                                       <input className="input-Dialog"
-                                         type="text"
-                                         placeholder="Aad Name"
-                                         onChange={(event) => {
-                                           setSearchTerm(event.target.value);
-                                         }}
-                                        />
-                                        <input className="input-Dialog"
-                                          type="text"
-                                          placeholder="Ik"
-                                          onChange={(event) => {
-                                            setSearchTerm(event.target.value);
-                                          }}
-                                         />
-                                         <input className="input-Dialog"
-                                           type="text"
-                                           placeholder="Omp"
-                                           onChange={(event) => {
-                                             setSearchTerm(event.target.value);
-                                           }}
-                                          />
-                                          <input className="input-Dialog"
-                                            type="text"
-                                            placeholder="Unit"
-                                            onChange={(event) => {
-                                              setSearchTerm(event.target.value);
-                                            }}
-                                           />
-                                           <input className="input-Dialog"
-                                             type="text"
-                                             placeholder="Comments"
-                                             onChange={(event) => {
-                                               setSearchTerm(event.target.value);
-                                             }}
-                                            />
-                                            <input className="input-Dialog"
-                                              type="text"
-                                              placeholder="Insertion Time"
-                                              onChange={(event) => {
-                                                setSearchTerm(event.target.value);
-                                              }}
-                                             />
-                                             <input className="input-Dialog"
-                                               type="text"
-                                               placeholder="Dashboreds"
-                                               onChange={(event) => {
-                                                 setSearchTerm(event.target.value);
-                                               }}
-                                              />
-                             </DialogContentText>
-                           </DialogContent>
-                           <DialogActions>
-                             <Button onClick={handleClose} color="primary">
-                               Cancel
-                             </Button>
-                             <Button onClick={handleClose} color="primary">
-                               Submit
-                             </Button>
-                           </DialogActions>
-                         </Dialog>
-                       </th>
-                      </tr>
-                      <tr>
-                       <th>
-                        <input className="input-container"
+              <i className="nc-icon nc-zoom-split nc-search"></i>
+              <input className="input-container"
+                type="text"
+                placeholder="Search"
+                onChange={(event) => {
+                setSearchTerm(event.target.value);
+                }}
+              />
+              <Button className="button-add-row" onClick={handleClickOpen}>+</Button>
+              <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                 <DialogContent>
+                   <DialogContentText>
+                     <input className="input-Dialog"
+                       type="text"
+                       placeholder="ID"
+                       onChange={(event) => {
+                         setSearchTerm(event.target.value);
+                       }}
+                      />
+                      <input className="input-Dialog"
+                        type="text"
+                        placeholder="Date Create"
+                        onChange={(event) => {
+                          setSearchTerm(event.target.value);
+                        }}
+                      />
+                      <input className="input-Dialog"
+                        type="text"
+                        placeholder="Kama"
+                        onChange={(event) => {
+                         setSearchTerm(event.target.value);
+                        }}
+                      />
+                      <input className="input-Dialog"
+                        type="text"
+                        placeholder="Last i"
+                        onChange={(event) => {
+                          setSearchTerm(event.target.value);
+                        }}
+                      />
+                     <input className="input-Dialog"
+                       type="text"
+                       placeholder="Birth Date"
+                       onChange={(event) => {
+                         setSearchTerm(event.target.value);
+                       }}
+                      />
+                      <input className="input-Dialog"
+                        type="text"
+                        placeholder="Last Date"
+                        onChange={(event) => {
+                          setSearchTerm(event.target.value);
+                        }}
+                       />
+                       <input className="input-Dialog"
+                         type="text"
+                         placeholder="ID Family"
+                         onChange={(event) => {
+                           setSearchTerm(event.target.value);
+                         }}
+                        />
+                        <input className="input-Dialog"
                           type="text"
-                          placeholder="search.."
+                          placeholder="Op Nam"
                           onChange={(event) => {
                             setSearchTerm(event.target.value);
                           }}
-                      />
-                      </th>
-                    </tr>
+                         />
+                         <input className="input-Dialog"
+                           type="text"
+                           placeholder="Aad Name"
+                           onChange={(event) => {
+                             setSearchTerm(event.target.value);
+                           }}
+                          />
+                          <input className="input-Dialog"
+                            type="text"
+                            placeholder="Ik"
+                            onChange={(event) => {
+                              setSearchTerm(event.target.value);
+                            }}
+                           />
+                           <input className="input-Dialog"
+                             type="text"
+                             placeholder="Omp"
+                             onChange={(event) => {
+                               setSearchTerm(event.target.value);
+                             }}
+                            />
+                          <input className="input-Dialog"
+                            type="text"
+                            placeholder="Unit"
+                            onChange={(event) => {
+                              setSearchTerm(event.target.value);
+                            }}
+                           />
+                           <input className="input-Dialog"
+                             type="text"
+                             placeholder="Comments"
+                             onChange={(event) => {
+                               setSearchTerm(event.target.value);
+                             }}
+                            />
+                            <input className="input-Dialog"
+                              type="text"
+                              placeholder="Insertion Time"
+                              onChange={(event) => {
+                                setSearchTerm(event.target.value);
+                              }}
+                             />
+                             <input className="input-Dialog"
+                               type="text"
+                               placeholder="Dashboreds"
+                               onChange={(event) => {
+                                 setSearchTerm(event.target.value);
+                               }}
+                              />
+                   </DialogContentText>
+                 </DialogContent>
+                 <DialogActions>
+                   <Button onClick={handleClose} color="primary">
+                     Cancel
+                   </Button>
+                   <Button onClick={handleClose} color="primary">
+                     Submit
+                   </Button>
+                 </DialogActions>
+               </Dialog>
+                <Table className="table-hover table-striped" >
+                  <thead>
                     <tr>
                       <th className="border-0">ID</th>
                       <th className="border-0">Date Create</th>

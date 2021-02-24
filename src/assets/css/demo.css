@@ -808,18 +808,9 @@
   border:0;
   border-bottom:1px solid #555;
   background:transparent;
-  width:70%;
+  width:20%;
   padding:8px 0 5px 8px;
-  font-size:16px;
-}
-
-.input-Dialog{
-  border:0;
-  border-bottom:1px solid #555;
-  background:transparent;
-  width:70%;
-  padding:8px 0 5px 8px;
-  margin: 5px 5px 5px 5px;
+  margin: 20px 20px 20px 0px;
   font-size:16px;
 }
 
@@ -833,4 +824,19 @@
   position: absolute;
   right: 50px;
 
+}
+
+.input-Dialog{
+  border:0;
+  border-bottom:1px solid #555;
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 8px;
+  margin: 10px 0px 10px 0px;
+  font-size:16px;
+}
+
+.nc-search{
+  margin-left: 20px;
+  color: black;
 }
