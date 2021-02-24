@@ -1,4 +1,11 @@
 import React,  { Component, useState,  useEffect} from "react";
+import CardAddRow from "components/Cards/CardAddRow";
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 
 // react-bootstrap components
 import {
@@ -19,6 +26,8 @@ function TableList() {
   //search on table
   const [searchTerm, setSearchTerm] = useState('');
 
+  const [open, setOpen] = useState(false);
+
   //insert the data from server to ools
   useEffect(() => {
     fetch('/table').then(response =>
@@ -28,34 +37,39 @@ function TableList() {
     );
   }, []);
 
+  const handleClickOpen = () => {
+  setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   //filter the table by the search input
-    const filterOols=(searchTerm)=> {
-      return (
-        ools.filter((ools)=> {
-          if (searchTerm == "") {
-            return ools;
-          } else if (ools.ID.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    //ools.Date_Create.toString().includes(searchTerm.toString()) ||
-                    ools.Kama.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    ools.Last_i.includes(searchTerm)  ||
-                    ools.Birth_Date.toString().includes(searchTerm.toString()) ||
-                    ools.Last_Date.toString().includes(searchTerm.toString()) ||
-                    ools.ID_Family.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    ools.Op_Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    ools.Aad_Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    ools.Ik.includes(searchTerm) ||
-                    ools.Omp.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    ools.Unit.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    ools.Comments.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    ools.Insertion_Time.includes(searchTerm)
-                   ) {
-            return ools;
-          }
+  const filterOols=(searchTerm)=> {
+    return (
+      ools.filter((ools)=> {
+        if (searchTerm == "") {
+          return ools;
+        } else if (ools.ID.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  //ools.Date_Create.toString().includes(searchTerm.toString()) ||
+                  ools.Kama.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  ools.Last_i.includes(searchTerm)  ||
+                  ools.Birth_Date.toString().includes(searchTerm.toString()) ||
+                  ools.Last_Date.toString().includes(searchTerm.toString()) ||
+                  ools.ID_Family.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  ools.Op_Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  ools.Aad_Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  ools.Ik.includes(searchTerm) ||
+                  ools.Omp.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  ools.Unit.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  ools.Comments.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  ools.Insertion_Time.includes(searchTerm)
+                 ) {
+          return ools;
+        }
       }
     ))
-  }
-
-  
+  };
 
 
   return (
@@ -72,7 +86,131 @@ function TableList() {
                   <thead>
                     <tr>
                       <th>
-                      <Button className="button-add-row">+</Button>
+                        <Button className="button-add-row" onClick={handleClickOpen}>+</Button>
+                        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                           <DialogContent>
+                             <DialogContentText>
+                               <input className="input-Dialog"
+                                 type="text"
+                                 placeholder="ID"
+                                 onChange={(event) => {
+                                   setSearchTerm(event.target.value);
+                                 }}
+                                />
+                                <input className="input-Dialog"
+                                  type="text"
+                                  placeholder="Date Create"
+                                  onChange={(event) => {
+                                    setSearchTerm(event.target.value);
+                                  }}
+                                 />
+                                 <input className="input-Dialog"
+                                   type="text"
+                                   placeholder="Kama"
+                                   onChange={(event) => {
+                                     setSearchTerm(event.target.value);
+                                   }}
+                                  />
+                                  <input className="input-Dialog"
+                                    type="text"
+                                    placeholder="Last i"
+                                    onChange={(event) => {
+                                      setSearchTerm(event.target.value);
+                                    }}
+                                   />
+                                   <input className="input-Dialog"
+                                     type="text"
+                                     placeholder="Birth Date"
+                                     onChange={(event) => {
+                                       setSearchTerm(event.target.value);
+                                     }}
+                                    />
+                                    <input className="input-Dialog"
+                                      type="text"
+                                      placeholder="Last Date"
+                                      onChange={(event) => {
+                                        setSearchTerm(event.target.value);
+                                      }}
+                                     />
+                                     <input className="input-Dialog"
+                                       type="text"
+                                       placeholder="ID Family"
+                                       onChange={(event) => {
+                                         setSearchTerm(event.target.value);
+                                       }}
+                                      />
+                                      <input className="input-Dialog"
+                                        type="text"
+                                        placeholder="Op Nam"
+                                        onChange={(event) => {
+                                          setSearchTerm(event.target.value);
+                                        }}
+                                       />
+                                       <input className="input-Dialog"
+                                         type="text"
+                                         placeholder="Aad Name"
+                                         onChange={(event) => {
+                                           setSearchTerm(event.target.value);
+                                         }}
+                                        />
+                                        <input className="input-Dialog"
+                                          type="text"
+                                          placeholder="Ik"
+                                          onChange={(event) => {
+                                            setSearchTerm(event.target.value);
+                                          }}
+                                         />
+                                         <input className="input-Dialog"
+                                           type="text"
+                                           placeholder="Omp"
+                                           onChange={(event) => {
+                                             setSearchTerm(event.target.value);
+                                           }}
+                                          />
+                                          <input className="input-Dialog"
+                                            type="text"
+                                            placeholder="Unit"
+                                            onChange={(event) => {
+                                              setSearchTerm(event.target.value);
+                                            }}
+                                           />
+                                           <input className="input-Dialog"
+                                             type="text"
+                                             placeholder="Comments"
+                                             onChange={(event) => {
+                                               setSearchTerm(event.target.value);
+                                             }}
+                                            />
+                                            <input className="input-Dialog"
+                                              type="text"
+                                              placeholder="Insertion Time"
+                                              onChange={(event) => {
+                                                setSearchTerm(event.target.value);
+                                              }}
+                                             />
+                                             <input className="input-Dialog"
+                                               type="text"
+                                               placeholder="Dashboreds"
+                                               onChange={(event) => {
+                                                 setSearchTerm(event.target.value);
+                                               }}
+                                              />
+                             </DialogContentText>
+                           </DialogContent>
+                           <DialogActions>
+                             <Button onClick={handleClose} color="primary">
+                               Cancel
+                             </Button>
+                             <Button onClick={handleClose} color="primary">
+                               Submit
+                             </Button>
+                           </DialogActions>
+                         </Dialog>
+                       </th>
+                      </tr>
+                      <tr>
+                       <th>
                         <input className="input-container"
                           type="text"
                           placeholder="search.."
