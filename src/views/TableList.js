@@ -28,6 +28,10 @@ function TableList() {
 
   const [open, setOpen] = useState(false);
 
+  const Colums =
+  ["ID", "Date Create", "Kama", "Last i", "Birth Date", "Last Date", "ID Family", "Op Name", "Aad Name", "Ik", "Omp", "Unit", "Comments", "Insertion Time", "Dashboreds"];
+
+
   //insert the data from server to ools
   useEffect(() => {
     fetch('/table').then(response =>
@@ -95,111 +99,15 @@ function TableList() {
                 <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
                  <DialogContent>
                    <DialogContentText>
+                   {Colums.map((column, index) => (
                      <input className="input-Dialog"
                        type="text"
-                       placeholder="ID"
+                       placeholder={column}
                        onChange={(event) => {
                          setSearchTerm(event.target.value);
                        }}
                       />
-                      <input className="input-Dialog"
-                        type="text"
-                        placeholder="Date Create"
-                        onChange={(event) => {
-                          setSearchTerm(event.target.value);
-                        }}
-                      />
-                      <input className="input-Dialog"
-                        type="text"
-                        placeholder="Kama"
-                        onChange={(event) => {
-                         setSearchTerm(event.target.value);
-                        }}
-                      />
-                      <input className="input-Dialog"
-                        type="text"
-                        placeholder="Last i"
-                        onChange={(event) => {
-                          setSearchTerm(event.target.value);
-                        }}
-                      />
-                     <input className="input-Dialog"
-                       type="text"
-                       placeholder="Birth Date"
-                       onChange={(event) => {
-                         setSearchTerm(event.target.value);
-                       }}
-                      />
-                      <input className="input-Dialog"
-                        type="text"
-                        placeholder="Last Date"
-                        onChange={(event) => {
-                          setSearchTerm(event.target.value);
-                        }}
-                       />
-                       <input className="input-Dialog"
-                         type="text"
-                         placeholder="ID Family"
-                         onChange={(event) => {
-                           setSearchTerm(event.target.value);
-                         }}
-                        />
-                        <input className="input-Dialog"
-                          type="text"
-                          placeholder="Op Nam"
-                          onChange={(event) => {
-                            setSearchTerm(event.target.value);
-                          }}
-                         />
-                         <input className="input-Dialog"
-                           type="text"
-                           placeholder="Aad Name"
-                           onChange={(event) => {
-                             setSearchTerm(event.target.value);
-                           }}
-                          />
-                          <input className="input-Dialog"
-                            type="text"
-                            placeholder="Ik"
-                            onChange={(event) => {
-                              setSearchTerm(event.target.value);
-                            }}
-                           />
-                           <input className="input-Dialog"
-                             type="text"
-                             placeholder="Omp"
-                             onChange={(event) => {
-                               setSearchTerm(event.target.value);
-                             }}
-                            />
-                          <input className="input-Dialog"
-                            type="text"
-                            placeholder="Unit"
-                            onChange={(event) => {
-                              setSearchTerm(event.target.value);
-                            }}
-                           />
-                           <input className="input-Dialog"
-                             type="text"
-                             placeholder="Comments"
-                             onChange={(event) => {
-                               setSearchTerm(event.target.value);
-                             }}
-                            />
-                            <input className="input-Dialog"
-                              type="text"
-                              placeholder="Insertion Time"
-                              onChange={(event) => {
-                                setSearchTerm(event.target.value);
-                              }}
-                             />
-                             <input className="input-Dialog"
-                               type="text"
-                               placeholder="Dashboreds"
-                               onChange={(event) => {
-                                 setSearchTerm(event.target.value);
-                               }}
-                              />
+                    ))}
                    </DialogContentText>
                  </DialogContent>
                  <DialogActions>
