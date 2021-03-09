@@ -1,5 +1,8 @@
 import React from "react";
 import ChartistGraph from "react-chartist";
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import opName from '../opName';
 // react-bootstrap components
 import {
   Badge,
@@ -16,10 +19,33 @@ import {
   Tooltip,
 } from "react-bootstrap";
 
+
+
+
 function Dashboard() {
+
+  const [inputValue, setInputValue] = React.useState('');
+  const [value, setValue] = React.useState(opName[0]);
+
   return (
     <>
       <Container fluid>
+        <Row>
+          <Autocomplete
+            value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+            inputValue={inputValue}
+              onInputChange={(event, newInputValue) => {
+                setInputValue(newInputValue);
+            }}
+            id="combo-box-opName"
+            options={opName}
+            getOptionLabel={(option) => option.title}
+            renderInput={(params) => <TextField {...params} label="Op Name" variant="outlined" />}
+          />
+        </Row>
         <Row>
           <Col lg="3" sm="6">
             <Card className="card-stats">

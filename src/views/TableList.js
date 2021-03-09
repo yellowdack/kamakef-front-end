@@ -31,6 +31,10 @@ function TableList() {
   const Colums =
   ["ID", "Date Create", "Kama", "Last i", "Birth Date", "Last Date", "ID Family", "Op Name", "Aad Name", "Ik", "Omp", "Unit", "Comments", "Insertion Time", "Dashboreds"];
 
+  const  state = {
+      "ID": '',
+      "Date Create": ''
+    };
 
   //insert the data from server to ools
   useEffect(() => {
@@ -90,7 +94,7 @@ function TableList() {
               <input className="input-container"
                 type="text"
                 placeholder="Search"
-                onChange={(event) => {
+                  onChange={(event) => {
                 setSearchTerm(event.target.value);
                 }}
               />
@@ -104,8 +108,8 @@ function TableList() {
                        type="text"
                        placeholder={column}
                        onChange={(event) => {
-                         setSearchTerm(event.target.value);
-                       }}
+                     setSearchTerm(event.target.value);
+                     }}
                       />
                     ))}
                    </DialogContentText>
@@ -122,21 +126,8 @@ function TableList() {
                 <Table className="table-hover table-striped" >
                   <thead>
                     <tr>
-                      <th className="border-0">ID</th>
-                      <th className="border-0">Date Create</th>
-                      <th className="border-0">Kama</th>
-                      <th className="border-0">Last i</th>
-                      <th className="border-0">Birth Date</th>
-                      <th className="border-0">Last Date</th>
-                      <th className="border-0">ID Family</th>
-                      <th className="border-0">Op Name</th>
-                      <th className="border-0">Aad Name</th>
-                      <th className="border-0">Ik</th>
-                      <th className="border-0">Omp</th>
-                      <th className="border-0">Unit</th>
-                      <th className="border-0">Comments</th>
-                      <th className="border-0">Insertion Time</th>
-                      <th className="border-0">Dashboreds</th>
+                    {Colums.map((column, index) => (
+                      <th className="border-0">{column}</th>))}
                     </tr>
                   </thead>
                   <tbody>
