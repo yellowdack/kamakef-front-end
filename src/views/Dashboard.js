@@ -2,7 +2,7 @@ import React from "react";
 import ChartistGraph from "react-chartist";
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import opName from '../opName';
+import {opName} from '../data';
 // react-bootstrap components
 import {
   Badge,

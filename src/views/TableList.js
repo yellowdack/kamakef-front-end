@@ -5,7 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import {ColumsName} from '../data'
 
 // react-bootstrap components
 import {
@@ -29,8 +29,8 @@ function TableList() {
   const [open, setOpen] = useState(false);
   //value Row
   const values ={"ID": "", "DateCreate": "", "Kama": "", "LastI": "", "BirthDate": "", "LastDate": "", "IDFamily": "", "OpName": "", "AadName": "", "Ik": "", "Omp": "", "Unit": "", "Comments": "", "InsertionTime": "", "Dashboreds": ""};
-  //
-  const ColumsName = {"ID": "ID", "DateCreate": "Date Create", "Kama": "Kama", "LastI": "Last i", "BirthDate": "Birth Date", "LastDate": "Last Date", "IDFamily": "ID Family", "OpName": "Op Name", "AadName": "Aad Name", "Ik": "Ik", "Omp": "Omp", "Unit": "Unit", "Comments": "Comments", "InsertionTime": "Insertion Time", "Dashboreds": "Dashboreds"};
+  //column for digit
+  const ColNameDialog = {"ID": "ID", "DateCreate": "Date Create", "Kama": "Kama", "LastI": "Last i", "BirthDate": "Birth Date", "LastDate": "Last Date", "IDFamily": "ID Family", "OpName": "Op Name", "AadName": "Aad Name", "Ik": "Ik", "Omp": "Omp", "Unit": "Unit", "Comments": "Comments", "Dashboreds": "Dashboreds"};
 
 
   //insert the data from server to ools
@@ -41,6 +41,19 @@ function TableList() {
       })
     );
   }, []);
+
+
+  const returnFlaskPost = (values) => {
+    console.log(values);
+    fetch('/table', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(values),
+  })
+};
 
   //create jason to the new row to add the server
   const handleInputChange = (event) => {
@@ -60,7 +73,9 @@ function TableList() {
   //submit buttom close the Dialog windows AND send the data to the server
   const handleSubmit = () => {
     setOpen(false);
+    values['InsertionTime'] = new Date().toLocaleString();
     //need do send the server the data
+    returnFlaskPost(values);
     console.log(Object.values(values));
   };
 
@@ -103,30 +118,30 @@ function TableList() {
                 <Card.Title as="h4">ool Table</Card.Title>
               </Card.Header>
               <Card.Body className="table-full-width table-responsive px-0">
-              <i className="nc-icon nc-zoom-split nc-search"></i>
-              <input className="input-container"
-                type="text"
-                placeholder="Search"
+                <i className="nc-icon nc-zoom-split nc-search"></i>
+                <input className="input-container"
+                  type="text"
+                  placeholder="Search"
                   onChange={(event) => {
-                setSearchTerm(event.target.value);
-                }}
-              />
-              <Button className="button-add-row" onClick={handleClickOpen}>+</Button>
-              <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Add New ool</DialogTitle>
-                 <DialogContent>
-                   <DialogContentText>
-                     {Object.keys(ColumsName).map(colName   => (
-                     <form className="form-Add-Row">
-                      <input className="input-Dialog"
-                       name = {colName}
-                       type="text"
-                       placeholder={ColumsName[colName]}
-                       onChange={handleInputChange}
-                      />
-                    </form>
-                    ))}
-                   </DialogContentText>
+                    setSearchTerm(event.target.value);
+                  }}
+                />
+                <Button className="button-add-row" onClick={handleClickOpen}>+</Button>
+                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                  <DialogTitle id="form-dialog-title">Add New ool</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText>
+                      {Object.keys(ColNameDialog).map(colName   => (
+                      <form className="form-Add-Row">
+                        <input className="input-Dialog"
+                          name = {colName}
+                          type="text"
+                          placeholder={ColNameDialog[colName]}
+                          onChange={handleInputChange}
+                        />
+                      </form>
+                      ))}
+                    </DialogContentText>
                  </DialogContent>
                  <DialogActions>
                    <Button onClick={handleClose} color="primary">
@@ -140,7 +155,7 @@ function TableList() {
                 <Table className="table-hover table-striped" >
                   <thead>
                     <tr>
-                    {Object.values(ColumsName).map(colName   => (
+                    {Object.values(ColumsName ).map(colName   => (
                       <th className="border-0">{colName}</th>))}
                     </tr>
                   </thead>
