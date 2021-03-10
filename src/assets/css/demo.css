@@ -836,13 +836,12 @@
   font-size:16px;
 }
 
-.nc-search{
-  margin-left: 20px;
-  color: black;
+.form-Add-Row {
+  width: 500px;
 }
 
 
-.combo-box-opName{
-  width: 600;
-
+.nc-search{
+  margin-left: 20px;
+  color: black;
 }

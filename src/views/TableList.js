@@ -25,16 +25,13 @@ function TableList() {
   const [ools, setOols] = useState([]);
   //search on table
   const [searchTerm, setSearchTerm] = useState('');
-
+  //open dialog
   const [open, setOpen] = useState(false);
+  //value Row
+  const values ={"ID": "", "DateCreate": "", "Kama": "", "LastI": "", "BirthDate": "", "LastDate": "", "IDFamily": "", "OpName": "", "AadName": "", "Ik": "", "Omp": "", "Unit": "", "Comments": "", "InsertionTime": "", "Dashboreds": ""};
+  //
+  const ColumsName = {"ID": "ID", "DateCreate": "Date Create", "Kama": "Kama", "LastI": "Last i", "BirthDate": "Birth Date", "LastDate": "Last Date", "IDFamily": "ID Family", "OpName": "Op Name", "AadName": "Aad Name", "Ik": "Ik", "Omp": "Omp", "Unit": "Unit", "Comments": "Comments", "InsertionTime": "Insertion Time", "Dashboreds": "Dashboreds"};
 
-  const Colums =
-  ["ID", "Date Create", "Kama", "Last i", "Birth Date", "Last Date", "ID Family", "Op Name", "Aad Name", "Ik", "Omp", "Unit", "Comments", "Insertion Time", "Dashboreds"];
-
-  const  state = {
-      "ID": '',
-      "Date Create": ''
-    };
 
   //insert the data from server to ools
   useEffect(() => {
@@ -45,12 +42,28 @@ function TableList() {
     );
   }, []);
 
-  const handleClickOpen = () => {
-  setOpen(true);
+  //create jason to the new row to add the server
+  const handleInputChange = (event) => {
+    const name = event.target.name;
+    values[name] = event.target.value;
   };
+
+  // + button open the dialog windows
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  // cancel button close the dialog windows
   const handleClose = () => {
     setOpen(false);
   };
+
+  //submit buttom close the Dialog windows AND send the data to the server
+  const handleSubmit = () => {
+    setOpen(false);
+    //need do send the server the data
+    console.log(Object.values(values));
+  };
+
 
   //filter the table by the search input
   const filterOols=(searchTerm)=> {
@@ -100,17 +113,18 @@ function TableList() {
               />
               <Button className="button-add-row" onClick={handleClickOpen}>+</Button>
               <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                <DialogTitle id="form-dialog-title">Add New ool</DialogTitle>
                  <DialogContent>
                    <DialogContentText>
-                   {Colums.map((column, index) => (
-                     <input className="input-Dialog"
+                     {Object.keys(ColumsName).map(colName   => (
+                     <form className="form-Add-Row">
+                      <input className="input-Dialog"
+                       name = {colName}
                        type="text"
-                       placeholder={column}
-                       onChange={(event) => {
-                     setSearchTerm(event.target.value);
-                     }}
+                       placeholder={ColumsName[colName]}
+                       onChange={handleInputChange}
                       />
+                    </form>
                     ))}
                    </DialogContentText>
                  </DialogContent>
@@ -118,7 +132,7 @@ function TableList() {
                    <Button onClick={handleClose} color="primary">
                      Cancel
                    </Button>
-                   <Button onClick={handleClose} color="primary">
+                   <Button onClick={handleSubmit} color="primary">
                      Submit
                    </Button>
                  </DialogActions>
@@ -126,8 +140,8 @@ function TableList() {
                 <Table className="table-hover table-striped" >
                   <thead>
                     <tr>
-                    {Colums.map((column, index) => (
-                      <th className="border-0">{column}</th>))}
+                    {Object.values(ColumsName).map(colName   => (
+                      <th className="border-0">{colName}</th>))}
                     </tr>
                   </thead>
                   <tbody>

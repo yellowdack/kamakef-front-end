@@ -43,6 +43,7 @@ function Dashboard() {
             id="combo-box-opName"
             options={opName}
             getOptionLabel={(option) => option.title}
+            style={{ width: 300, margin: "0px 500px 20px 500px" }}
             renderInput={(params) => <TextField {...params} label="Op Name" variant="outlined" />}
           />
         </Row>
